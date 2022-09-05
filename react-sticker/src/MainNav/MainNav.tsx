@@ -13,12 +13,19 @@ import {
 } from '@heroicons/react/20/solid'
 import { Menu, Transition } from '@headlessui/react'
 import './MainNav.scss';
+import { useEffect } from "react";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function MainNav() {
+export default function MainNav(props) {
+
+
+    useEffect(() => {
+        console.log('isEdit',props);
+    })
+
     return (
         <div className="mainNav__wrapper">
             <div className="lg:flex lg:items-center lg:justify-between">
@@ -32,9 +39,10 @@ export default function MainNav() {
                 <button
                     type="button"
                     className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    onClick={() => props.handleSetMode()}
                 >
                     <PencilIcon className="-ml-1 mr-2 h-5 w-5 text-gray-500" aria-hidden="true" />
-                    Add a sticker
+                    {props.isEdit ? 'review mode' : 'Add a sticker'}
                 </button>
                 </span>
 
