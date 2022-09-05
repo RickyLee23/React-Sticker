@@ -16,8 +16,6 @@ function App() {
     setIsEditMode(!isEdit);
   }
 
-
-
   return (
     <div className="App">
       { !isLogin && <LoginPage></LoginPage> }
