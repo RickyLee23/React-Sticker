@@ -2,6 +2,7 @@ import React, { forwardRef, useEffect, useRef } from "react";
 import './Sticker.scss'
 
 const Sticker = (props) => {
+    const ref = useRef(null);
 
     return (
         <div className="sticker__container" 
@@ -9,9 +10,10 @@ const Sticker = (props) => {
                 position:'absolute',
                 left:props.inputValue.positionX,
                 top:props.inputValue.positionY,
+                backgroundColor: 'red',
             }}
-            onDoubleClick={() => {props.editSticker()}}
-            onMouseDown={(e) => {props.dragMouseDown(e, props.inputValue.key)}}>
+            ref={ref}
+            onMouseDown={() => props.clickBoardMouseDown(ref)}>
             {props.inputValue.content}
         </div>
     )
